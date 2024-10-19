@@ -1,13 +1,14 @@
 .body{
 	display: flex;
+
 }
 
 #mapdiv{
-	
+	z-index: 2;
 	justify-self: end;
 	display: flex;
 	flex-direction: column;
-	width: ;
+	/* width: ; */
 }
 
 #guess{
@@ -29,13 +30,24 @@
 	transition: width 0.2s ease, height 0.2s ease;
 	border-radius: 10px;
 	cursor: pointer;
+	z-index: 2;
+
 }
 
 #guess{
-
+	margin-right: 50px;
+	align-self: flex-end;
+	
+	width: 200px;
 }
 
 #map:hover {
-	width: 800px;
-	height: 400px;
+	width: 960px;
+	height: 640px;
+}
+
+#sampleimage {
+	width: 10%;
+	height: 10%;
+	border-radius: 20px;
 }
