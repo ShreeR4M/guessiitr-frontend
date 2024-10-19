@@ -137,6 +137,7 @@ var nextRoundButton = document.getElementById('next');
 var timer=document.getElementById('timer');
 var timeupDiv=document.getElementById('timeup');
 var sampleImage=document.getElementById('sampleImage');
+var interval;
 
 nextRoundButton.onclick = function() {   
 	
@@ -152,7 +153,8 @@ nextRoundButton.onclick = function() {
         }
     });
 
-	startTimer(5 , timer , sampleImage);
+	clearInterval(interval);
+	startTimer(15 , timer , sampleImage);
 
     marker = L.marker([29.867219237294258, 77.89531946182252]).addTo(map);
     var imag = new Image();
@@ -249,7 +251,7 @@ function CalculateScore(){
 
 function startTimer(duration, display, image) {
     var timer = duration, seconds;
-    var interval = setInterval(function() {
+    interval = setInterval(function() {
         seconds = parseInt(timer % 60, 10);
 
         seconds = seconds < 10 ? "0" + seconds : seconds;
@@ -268,4 +270,11 @@ function startTimer(duration, display, image) {
 			display.style.color = "white";
         }
     }, 1000);
+}
+
+function ResetTimer(){
+	timer.style.display = "block";
+	timeupDiv.style.display = "none";
+	sampleImage.style.filter = "none";
+	startTimer(15 , timer , sampleImage);
 }
