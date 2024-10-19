@@ -1,0 +1,61 @@
+/* .image-container {
+    position: relative;
+    display: inline-block;
+    width: 100vw; /* 100% of the viewport width */
+
+
+/* .image-container img {
+    width: 100%;
+    height: 100%;
+    display: block;
+} */
+
+html{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body,html{
+    margin: 0;
+    padding: 0;
+}
+
+#background{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    transform: scale(1.1);
+    transform-origin: center center;
+}
+
+.button-container {
+    position: absolute;
+    top: 10%; /* 20% margin from the top */
+    left: 10%; /* 20% margin from the left */
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.Guess {
+    margin-bottom: 15px; /* Space between GuessIITR image and play button */
+    width: 120%; /* Set a specific width for GuessIITR image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.play {
+    cursor: pointer;
+    width: 50%; /* Match the width of GuessIITR image */
+    height:auto;
+    transition: width 0.1s; 
+}
+
+.play:hover {
+    content: url('/photo/AfterPlay.png'); 
+    width: 60%;/* Change the image on hover */
+}
