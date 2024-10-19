@@ -132,7 +132,11 @@ window.onload = function() {
 
 var nextRoundButton = document.getElementById('next');
 
-nextRoundButton.onclick = function() {    
+nextRoundButton.onclick = function() {   
+	
+	nextRoundButton.style.display = "none";
+	guessButton.style.display = "block";
+	
     map.eachLayer(function (layer) {
         if(layer instanceof L.Marker || layer instanceof L.Polyline) {
             map.removeLayer(layer);
@@ -189,10 +193,13 @@ function deg2rad(deg) {
 
 var guessButton = document.getElementById('guess');
 guessButton.onclick = function() {
+
     CalculateScore();
+	guessButton.style.display = "none";
+	nextRoundButton.style.display = "block";
+	// document.getElementById('map').classList.add('fullscreen');
+
 };
-
-
 
 function CalculateScore(){
 
