@@ -3,6 +3,15 @@ function onMapClick(e) {
 	marker.setLatLng(e.latlng);
 }
 
+const image_urls = [
+	"./assets/photos/img1.jpg",
+	"./assets/photos/img2.jpg",
+]
+
+getRandomImage = () => {
+	return image_urls[Math.floor(Math.random() * image_urls.length)];
+}
+
 var map = L.map('map', {
     maxBounds: [[29.858, 77.885], [29.875, 77.905]],
     maxBoundsViscosity: 1.0 
