@@ -72,25 +72,26 @@ function CalculateScore(){
 	var lat1 = latlng.lat;
 	var lng1 = latlng.lng;
 
-	console.log(lat1, lng1);
-
 	var lat2 = lat;
 	var lng2 = lon;
 
 	var distance = getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2)*1000;
 	var score = 0;
 	
-	console.log(distance);
+	console.log("distance" + distance);
+	console.log(lat1, lng1);
 	
 	var newMarker = L.marker([lat2, lng2]).addTo(map);
-    // var mapDiv = document.getElementById('map');
-    // mapDiv.classList.add('fullscreen');
 
     var latlngs = [
     [lat1, lng1],
     [lat2, lng2]
     ];
     var polyline = L.polyline(latlngs, { color: 'red' }).addTo(map);
+
+	var sigma = 25;
+	var score = 1000*Math.exp((-1*distance*distance*distance)/Math.pow(sigma, 5));
+	console.log("score" + " " + score);
 
     map.fitBounds(polyline.getBounds());
 
