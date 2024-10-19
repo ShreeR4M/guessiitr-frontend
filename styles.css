@@ -2,18 +2,37 @@
 	display: flex;
 }
 
+#mapdiv{
+	
+	justify-self: end;
+	display: flex;
+	flex-direction: column;
+	width: ;
+}
+
+#guess{
+	margin-right: 50px;
+	align-self: flex-end;
+	width: 200px;
+}
+
 #map {
-	position: fixed;
+	/* position: fixed; */
+	align-self: flex-end;
 	margin-bottom: 20px;
 	margin-right: 20px;
-	border: 2px solid #000;
+	border: 1px solid #000;
 	bottom: 0;
 	right: 0;
 	width: 480px;
 	height: 240px;
 	transition: width 0.2s ease, height 0.2s ease;
-	border-radius: 20px;
+	border-radius: 10px;
 	cursor: pointer;
+}
+
+#guess{
+
 }
 
 #map:hover {
