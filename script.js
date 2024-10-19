@@ -1,5 +1,5 @@
 let images = [];
-fetch('/imageUrls.txt')
+fetch('imageUrls.txt')
 .then(response => response.text())
 .then(data => {
     images = data.split('\n').map(line => line.trim()).filter(line => line.length > 0);
@@ -12,11 +12,9 @@ function getRandomImage() {
     return images[randomIndex];
 }
 
-
 function onMapClick(e) {
 	marker.setLatLng(e.latlng);
 }
-
 
 var map = L.map('map', {
     maxBounds: [[29.858, 77.885], [29.875, 77.905]],
@@ -73,29 +71,22 @@ window.onload = function() {
     });
 };
 
-
 var nextRoundButton = document.getElementById('next');
 var timer=document.getElementById('timer');
 var timeupDiv=document.getElementById('timeup');
 var sampleImage=document.getElementById('sampleImage');
 var interval;
+var scorecard = document.getElementById('scorecard');
 
 nextRoundButton.onclick = function() {   
 	
   	nextRoundButton.style.display = "none";
-    guessButton.style.display = "block";
-    timer.style.display = "block";
-    timeupDiv.style.display = "none";
-    sampleImage.style.filter = "none";
 	
     map.eachLayer(function (layer) {
         if(layer instanceof L.Marker || layer instanceof L.Polyline) {
             map.removeLayer(layer);
         }
     });
-
-	clearInterval(interval);
-	startTimer(15 , timer , sampleImage);
 
     marker = L.marker([29.867219237294258, 77.89531946182252]).addTo(map);
     var imag = new Image();
@@ -106,6 +97,16 @@ nextRoundButton.onclick = function() {
 
     current_img.onload = function() {
     EXIF.getData(current_img, function() {
+
+        guessButton.style.display = "block";
+        timer.style.display = "block";
+        timeupDiv.style.display = "none";
+        sampleImage.style.filter = "none";
+        scorecard.style.display = "none";
+        clearInterval(interval);
+        startTimer(15 , timer , sampleImage);
+    
+    
         console.log("Image loaded.");
         var latData1 = [];
         var lonData1 = [];
@@ -153,8 +154,11 @@ guessButton.onclick = function() {
 	guessButton.style.display = "none";
 	nextRoundButton.style.display = "block";
 	// document.getElementById('map').classList.add('fullscreen');
+   
 
 };
+
+
 
 function CalculateScore(){
 
@@ -184,6 +188,20 @@ function CalculateScore(){
 	var score = 1000*Math.exp((-1*distance*distance*distance)/Math.pow(sigma, 5));
 	console.log("score" + " " + Math.round(score));
 
+    var roundedScore = Math.round(score);
+
+    console.log("Score: " + roundedScore);
+
+    var scorecard = document.getElementById('scorecard');
+    var scoreValue = document.getElementById('scoreValue');
+    var distanceValue = document.getElementById('distanceValue');
+
+    scoreValue.innerText = roundedScore;
+    distanceValue.innerText = "You were " + Math.round(distance) + " meters away.";
+
+    scorecard.style.display = "block";
+    document.getElementById('sampleImage').style.filter = "blur(15px)";
+
     map.fitBounds(polyline.getBounds());
 	guessButton=document.getElementById('guess');
 
@@ -203,7 +221,7 @@ function startTimer(duration, display, image) {
 			display.style.color = (timer % 2 === 0) ? "red" : "white";
 		}
 
-        if (--timer < 0) {
+        if (timer-- < 0) {  
             clearInterval(interval);
             display.style.display = "none";
 			timeupDiv.style.display = "block";

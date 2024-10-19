@@ -128,3 +128,31 @@ body{
 	align-self: flex-end;
 	display: none;
 }
+
+
+#scorecard{
+       /* background-color: #f9f9f9;
+       border: 1px solid #333;
+       margin: 10px;
+       padding: 10px;
+       display: none; */
+
+       background-color: rgba(28, 28, 28, 0.9);
+       opacity: 0.8;
+    border: 2px solid #333;
+    padding: 20px;
+    width: 20%;
+    margin: 0 auto;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: center;
+    font-size: 22px;
+    display: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+       color: white;
+
+}
