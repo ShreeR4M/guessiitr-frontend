@@ -9,6 +9,13 @@ var map = L.map('map', {
 
 var bounds = [[29.858, 77.885], [29.875, 77.905] ];
 
+var latlngs = [
+    [29.858, 77.885],
+    [29.865, 77.890],
+    [29.870, 77.895],
+    [29.875, 77.905]
+];
+
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -64,7 +71,12 @@ function deg2rad(deg) {
 }
 
 var guessButton = document.getElementById('guess');
-guessButton.onclick = CalculateScore;
+guessButton.onclick = function() {
+    document.getElementById('map').classList.add('fullscreen');
+    CalculateScore();
+};
+
+
 
 function CalculateScore(){
 
@@ -79,9 +91,9 @@ function CalculateScore(){
 	var score = 0;
 	
 	console.log("distance" + distance);
-	console.log(lat1, lng1);
 	
 	var newMarker = L.marker([lat2, lng2]).addTo(map);
+	console.log(lat2, lng2);
 
     var latlngs = [
     [lat1, lng1],
@@ -91,9 +103,11 @@ function CalculateScore(){
 
 	var sigma = 25;
 	var score = 1000*Math.exp((-1*distance*distance*distance)/Math.pow(sigma, 5));
-	console.log("score" + " " + score);
+	console.log("score" + " " + Math.round(score));
 
     map.fitBounds(polyline.getBounds());
+	guessButton=document.getElementById('guess');
+
 
 }
 
