@@ -1,70 +1,11 @@
-const images = ["IITR-database/PXL_20241019_010051413.jpg", "IITR-database/PXL_20241019_062000061.jpg", 
-"IITR-database/PXL_20241019_010101684.jpg", "IITR-database/PXL_20241019_062019414.jpg", 
-"IITR-database/PXL_20241019_011146373.jpg", "IITR-database/PXL_20241019_062037181.jpg", 
-"IITR-database/PXL_20241019_011153433.jpg", "IITR-database/PXL_20241019_062057285.jpg", 
-"IITR-database/PXL_20241019_011203991.jpg", "IITR-database/PXL_20241019_062120503.jpg", 
-"IITR-database/PXL_20241019_054000618.jpg", "IITR-database/PXL_20241019_062143280.jpg", 
-"IITR-database/PXL_20241019_054231239.jpg", "IITR-database/PXL_20241019_062200995.jpg", 
-"IITR-database/PXL_20241019_054426559.jpg", "IITR-database/PXL_20241019_062212864.jpg", 
-"IITR-database/PXL_20241019_054638596.jpg", "IITR-database/PXL_20241019_062236428.jpg", 
-"IITR-database/PXL_20241019_054659281.jpg", "IITR-database/PXL_20241019_062311363.jpg", 
-"IITR-database/PXL_20241019_054743069.jpg", "IITR-database/PXL_20241019_062322591.jpg", 
-"IITR-database/PXL_20241019_054749078.jpg", "IITR-database/PXL_20241019_062356760.jpg", 
-"IITR-database/PXL_20241019_054822061.jpg", "IITR-database/PXL_20241019_062458494.jpg", 
-"IITR-database/PXL_20241019_054937246.jpg", "IITR-database/PXL_20241019_062526933.jpg", 
-"IITR-database/PXL_20241019_055018107.jpg", "IITR-database/PXL_20241019_062552161.jpg", 
-"IITR-database/PXL_20241019_055145126.jpg", "IITR-database/PXL_20241019_062602962.jpg", 
-"IITR-database/PXL_20241019_055211411.jpg", "IITR-database/PXL_20241019_062636081.jpg", 
-"IITR-database/PXL_20241019_055235503.jpg", "IITR-database/PXL_20241019_062644485.jpg", 
-"IITR-database/PXL_20241019_055326272.jpg", "IITR-database/PXL_20241019_062706072.jpg", 
-"IITR-database/PXL_20241019_055345142.jpg", "IITR-database/PXL_20241019_062822579.jpg", 
-"IITR-database/PXL_20241019_055454136.jpg", "IITR-database/PXL_20241019_062913384.jpg", 
-"IITR-database/PXL_20241019_055535721.jpg", "IITR-database/PXL_20241019_062942101.jpg", 
-"IITR-database/PXL_20241019_055638945.jpg", "IITR-database/PXL_20241019_062946332.jpg", 
-"IITR-database/PXL_20241019_055738761.jpg", "IITR-database/PXL_20241019_063008798.jpg", 
-"IITR-database/PXL_20241019_055751830.jpg", "IITR-database/PXL_20241019_063018368.jpg", 
-"IITR-database/PXL_20241019_055801667.jpg", "IITR-database/PXL_20241019_063104499.jpg", 
-"IITR-database/PXL_20241019_055831795.jpg", "IITR-database/PXL_20241019_063126776.jpg", 
-"IITR-database/PXL_20241019_055915371.jpg", "IITR-database/PXL_20241019_063144590.jpg", 
-"IITR-database/PXL_20241019_060023148.jpg", "IITR-database/PXL_20241019_063147859.jpg", 
-"IITR-database/PXL_20241019_060054673.jpg", "IITR-database/PXL_20241019_063312462.jpg", 
-"IITR-database/PXL_20241019_060126728.jpg", "IITR-database/PXL_20241019_063337459.jpg", 
-"IITR-database/PXL_20241019_060133245.jpg", "IITR-database/PXL_20241019_063357676.jpg", 
-"IITR-database/PXL_20241019_060319752.jpg", "IITR-database/PXL_20241019_063426539.jpg", 
-"IITR-database/PXL_20241019_060429928.jpg", "IITR-database/PXL_20241019_063434931.jpg", 
-"IITR-database/PXL_20241019_060445398.jpg", "IITR-database/PXL_20241019_063514082.jpg", 
-"IITR-database/PXL_20241019_060525497.jpg", "IITR-database/PXL_20241019_063540614.jpg", 
-"IITR-database/PXL_20241019_060559299.jpg", "IITR-database/PXL_20241019_063553011.jpg", 
-"IITR-database/PXL_20241019_060612944.jpg", "IITR-database/PXL_20241019_063641787.jpg", 
-"IITR-database/PXL_20241019_060644924.jpg", "IITR-database/PXL_20241019_063712046.jpg", 
-"IITR-database/PXL_20241019_060713199.jpg", "IITR-database/PXL_20241019_063731245.jpg", 
-"IITR-database/PXL_20241019_060725520.jpg", "IITR-database/PXL_20241019_063759642.jpg", 
-"IITR-database/PXL_20241019_060744791.jpg", "IITR-database/PXL_20241019_063830304.jpg", 
-"IITR-database/PXL_20241019_060849232.jpg", "IITR-database/PXL_20241019_063858801.jpg", 
-"IITR-database/PXL_20241019_060902290.jpg", "IITR-database/PXL_20241019_063938685.jpg", 
-"IITR-database/PXL_20241019_060920549.jpg", "IITR-database/PXL_20241019_064006550.jpg", 
-"IITR-database/PXL_20241019_060936886.jpg", "IITR-database/PXL_20241019_064030714.jpg", 
-"IITR-database/PXL_20241019_061009432.jpg", "IITR-database/PXL_20241019_064039813.jpg", 
-"IITR-database/PXL_20241019_061058966.jpg", "IITR-database/PXL_20241019_064052632.jpg", 
-"IITR-database/PXL_20241019_061115499.jpg", "IITR-database/PXL_20241019_064119376.jpg", 
-"IITR-database/PXL_20241019_061128939.jpg", "IITR-database/PXL_20241019_064148662.jpg", 
-"IITR-database/PXL_20241019_061157593.jpg", "IITR-database/PXL_20241019_064207901.jpg", 
-"IITR-database/PXL_20241019_061231547.jpg", "IITR-database/PXL_20241019_064214545.jpg", 
-"IITR-database/PXL_20241019_061414095.jpg", "IITR-database/PXL_20241019_064310810.jpg", 
-"IITR-database/PXL_20241019_061500868.jpg", "IITR-database/PXL_20241019_064327356.jpg", 
-"IITR-database/PXL_20241019_061523436.jpg", "IITR-database/PXL_20241019_064352472.jpg", 
-"IITR-database/PXL_20241019_061540089.jpg", "IITR-database/PXL_20241019_064405308.jpg", 
-"IITR-database/PXL_20241019_061550291.jpg", "IITR-database/PXL_20241019_064414615.jpg", 
-"IITR-database/PXL_20241019_061627202.jpg", "IITR-database/PXL_20241019_064453876.jpg", 
-"IITR-database/PXL_20241019_061718529.jpg", "IITR-database/PXL_20241019_064516970.jpg", 
-"IITR-database/PXL_20241019_061758513.jpg", "IITR-database/PXL_20241019_064523296.jpg", 
-"IITR-database/PXL_20241019_061819930.jpg", "IITR-database/PXL_20241019_064553126.jpg", 
-"IITR-database/PXL_20241019_061830082.jpg", "IITR-database/PXL_20241019_064610230.jpg", 
-"IITR-database/PXL_20241019_061839748.jpg", "IITR-database/PXL_20241019_064629638.jpg", 
-"IITR-database/PXL_20241019_061901281.jpg", "IITR-database/PXL_20241019_064657215.jpg", 
-"IITR-database/PXL_20241019_061921181.jpg", "IITR-database/PXL_20241019_064701877.jpg", 
-"IITR-database/PXL_20241019_061940425.jpg"
-];
+let images = [];
+fetch('/imageUrls.txt')
+.then(response => response.text())
+.then(data => {
+    images = data.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+    console.log(images);
+})
+.catch(error => console.error('Error fetching the file:', error));
 
 function getRandomImage() {
     const randomIndex = Math.floor(Math.random() * images.length);
@@ -113,7 +54,7 @@ window.onload = function() {
 
 	startTimer(15 , timer , sampleImage);
 
-    imag = "sample.jpg";
+    imag = "https://i.ibb.co/h7Yf95M/PXL-20241019-063126776.jpg";
     document.getElementById('sampleImage').src = imag;
     imag = document.getElementById('sampleImage');
     EXIF.getData(imag, function() {
