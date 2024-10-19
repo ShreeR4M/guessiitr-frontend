@@ -58,6 +58,14 @@ body{
 	height: 650px;	
 }
 
+#map.enlarged{
+	position: absolute;
+	width: 1000px;
+	height:700px;
+	top:0;
+	left:0;	
+}
+
 #guess{
 	border: 1px solid white;
 	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;

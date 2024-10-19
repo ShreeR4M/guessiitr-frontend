@@ -77,6 +77,7 @@ var timeupDiv=document.getElementById('timeup');
 var sampleImage=document.getElementById('sampleImage');
 var interval;
 var scorecard = document.getElementById('scorecard');
+var mapElement = document.getElementById('map');
 
 nextRoundButton.onclick = function() {   
 	
@@ -98,13 +99,13 @@ nextRoundButton.onclick = function() {
     current_img.onload = function() {
     EXIF.getData(current_img, function() {
 
+        clearInterval(interval);
+        startTimer(15 , timer , sampleImage);
         guessButton.style.display = "block";
         timer.style.display = "block";
         timeupDiv.style.display = "none";
         sampleImage.style.filter = "none";
         scorecard.style.display = "none";
-        clearInterval(interval);
-        startTimer(15 , timer , sampleImage);
     
     
         console.log("Image loaded.");
@@ -153,8 +154,10 @@ guessButton.onclick = function() {
     CalculateScore();
 	guessButton.style.display = "none";
 	nextRoundButton.style.display = "block";
-	// document.getElementById('map').classList.add('fullscreen');
-   
+	timer.style.display = "none";
+	timeupDiv.style.display = "none";
+	clearInterval(interval);
+	// mapElement.classList.add('enlarged');
 
 };
 
@@ -168,6 +171,11 @@ function CalculateScore(){
 
 	var lat2 = lat;
 	var lng2 = lon;
+
+    var midLat = (lat1 + lat2) / 2;
+    var midLng = (lng1 + lng2) / 2;
+
+    map.setView([midLat, midLng], map.getZoom());
 
 	var distance = getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2)*1000;
 	var score = 0;
@@ -202,7 +210,7 @@ function CalculateScore(){
     scorecard.style.display = "block";
     document.getElementById('sampleImage').style.filter = "blur(15px)";
 
-    map.fitBounds(polyline.getBounds());
+    // map.fitBounds(polyline.getBounds());
 	guessButton=document.getElementById('guess');
 
 
