@@ -110,6 +110,9 @@ var lat = 0;
 var lon = 0;
 
 window.onload = function() {
+
+	startTimer(15 , timer , sampleImage);
+
     imag = "sample.jpg";
     document.getElementById('sampleImage').src = imag;
     imag = document.getElementById('sampleImage');
@@ -131,17 +134,26 @@ window.onload = function() {
 
 
 var nextRoundButton = document.getElementById('next');
+var timer=document.getElementById('timer');
+var timeupDiv=document.getElementById('timeup');
+var sampleImage=document.getElementById('sampleImage');
 
 nextRoundButton.onclick = function() {   
 	
-	nextRoundButton.style.display = "none";
-	guessButton.style.display = "block";
+  	nextRoundButton.style.display = "none";
+    guessButton.style.display = "block";
+    timer.style.display = "block";
+    timeupDiv.style.display = "none";
+    sampleImage.style.filter = "none";
 	
     map.eachLayer(function (layer) {
         if(layer instanceof L.Marker || layer instanceof L.Polyline) {
             map.removeLayer(layer);
         }
     });
+
+	startTimer(5 , timer , sampleImage);
+
     marker = L.marker([29.867219237294258, 77.89531946182252]).addTo(map);
     var imag = new Image();
     imag.src = getRandomImage();
@@ -233,4 +245,27 @@ function CalculateScore(){
 	guessButton=document.getElementById('guess');
 
 
+}
+
+function startTimer(duration, display, image) {
+    var timer = duration, seconds;
+    var interval = setInterval(function() {
+        seconds = parseInt(timer % 60, 10);
+
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = "00:" + seconds;
+
+		if( timer < 6){
+			display.style.color = (timer % 2 === 0) ? "red" : "white";
+		}
+
+        if (--timer < 0) {
+            clearInterval(interval);
+            display.style.display = "none";
+			timeupDiv.style.display = "block";
+            image.style.filter = "blur(50px)"; 
+			display.style.color = "white";
+        }
+    }, 1000);
 }
