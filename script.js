@@ -1,3 +1,4 @@
+
 function onMapClick(e) {
 	marker.setLatLng(e.latlng);
 }
@@ -72,7 +73,6 @@ function deg2rad(deg) {
 
 var guessButton = document.getElementById('guess');
 guessButton.onclick = function() {
-    document.getElementById('map').classList.add('fullscreen');
     CalculateScore();
 };
 
@@ -110,4 +110,3 @@ function CalculateScore(){
 
 
 }
-
