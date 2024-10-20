@@ -56,6 +56,6 @@ body,html{
 }
 
 .play:hover {
-    content: url('/photo/AfterPlay.png'); 
+    content: url('photo/AfterPlay.png'); 
     width: 60%;/* Change the image on hover */
 }
