@@ -49,12 +49,13 @@ var lat = 0;
 var lon = 0;
 
 window.onload = function() {
-
-	startTimer(15 , timer , sampleImage);
-
-    imag = "https://i.ibb.co/h7Yf95M/PXL-20241019-063126776.jpg";
-    document.getElementById('sampleImage').src = imag;
+    startTimer(15 , timer , sampleImage);
+    
+    var imag = new Image();
+    imag.src = getRandomImage();
+    document.getElementById('sampleImage').src = imag.src;
     imag = document.getElementById('sampleImage');
+    imag.onload = function() {
     EXIF.getData(imag, function() {
         var latData = EXIF.getTag(this, "GPSLatitude");
         var lonData = EXIF.getTag(this, "GPSLongitude");
@@ -69,6 +70,7 @@ window.onload = function() {
             console.log("No GPS data found.");
         }
     });
+    };
 };
 
 var nextRoundButton = document.getElementById('next');
@@ -161,6 +163,13 @@ guessButton.onclick = function() {
 
 };
 
+var greenIcon = L.icon({
+    iconUrl: 'photo/greenPin.png',
+    iconsize: [35, 35],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
 
 
 function CalculateScore(){
@@ -182,7 +191,7 @@ function CalculateScore(){
 	
 	console.log("distance" + distance);
 	
-	var newMarker = L.marker([lat2, lng2]).addTo(map);
+	var newMarker = L.marker([lat2, lng2],{icon: greenIcon}).addTo(map);
 	console.log(lat2, lng2);
 
     var latlngs = [
@@ -227,6 +236,9 @@ function startTimer(duration, display, image) {
 
 		if( timer < 6){
 			display.style.color = (timer % 2 === 0) ? "red" : "white";
+		}
+		else{
+			display.style.color = "white";
 		}
 
         if (timer-- < 0) {  
